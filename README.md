@@ -16,4 +16,5 @@
     - Department of Physics, Assam Don Bosco University, Tapesia, Assam - 782 402, India
 
 **References:**
-1. https://www.youtube.com/watch?v=RGOj5yH7evk
+1. FreeCodeCamp crash course: https://www.youtube.com/watch?v=RGOj5yH7evk
+2. Git and Github installation on Win 11: https://www.youtube.com/watch?v=AdzKzlp66sQ
