@@ -18,3 +18,4 @@
 **References:**
 1. FreeCodeCamp crash course: https://www.youtube.com/watch?v=RGOj5yH7evk
 2. Git and Github installation on Win 11: https://www.youtube.com/watch?v=AdzKzlp66sQ
+3. Github installation blog: https://www.atlassian.com/git/tutorials/install-git
