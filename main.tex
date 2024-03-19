@@ -1,0 +1,47 @@
+\input{preamble}
+
+\begin{document}
+    
+    \twocolumn[{    
+        \maketitle    
+        \corres{\authoremail}
+        
+        %% Manuscript information: received, revised and accepted dates
+        \msinfo{1 January 2015}{1 January 2015}{1 January 2015}
+        
+        %% Abstract
+        \input{abstract}
+        
+        %% PACS numbers
+        \pacs{12.60.Jv; 12.10.Dm; 98.80.Cq; 11.30.Hv}    
+    }]
+    
+    \doinum{12.3456/s78910-011-012-3}   % DOI number
+    \artcitid{\#\#\#\#}                 % Article citation ID
+    \volnum{123}                        % Volume number
+    \year{2016}                         % Year of publication
+    \pgrange{23--25}                    % Page range
+    \setcounter{page}{23}               % Starting page
+    \lp{25}                             % Last page
+
+    %% Sections
+    \input{sections/01-introduction}
+    \input{sections/02-observations}
+    \input{sections/03-reduction}
+    \input{sections/04-results}
+    \input{sections/05-discussion}
+    
+    %% Appendices    
+    \appendix
+        \input{appendices/appendix-a}
+        \input{appendices/appendix-b}
+    
+    %% Acknowledgements
+    \input{acknowledgements}    
+    
+    %%use \balance somewhere in the left column of the last page to balance the two columns in the end page
+    
+    %% References
+    \input{references}
+
+\end{document}
