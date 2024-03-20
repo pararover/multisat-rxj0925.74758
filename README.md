@@ -19,3 +19,15 @@
 1. FreeCodeCamp crash course: https://www.youtube.com/watch?v=RGOj5yH7evk
 2. Git and Github installation on Win 11: https://www.youtube.com/watch?v=AdzKzlp66sQ
 3. Github installation blog: https://www.atlassian.com/git/tutorials/install-git
+
+**For pushing files/code:**
+1. Navigate to the folder
+2. git status --> Should show "nothing to commit, working tree clean"
+3. Add/modify files or code
+4. git status --> Should show "Untracked files:..."
+5. git add .
+6. git status --> Should show "Changes to be committed:"
+7. git commit -m "Comment" .
+8. git status --> Should show "Your branch is ahead of 'origin/main' by 1 commit."
+9. git push -u origin main
+10. git status --> Should show "nothing to commit, working tree clean"
