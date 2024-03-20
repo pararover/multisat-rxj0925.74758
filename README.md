@@ -22,15 +22,16 @@
 
 **For pushing files/code:**
 1. Navigate to the folder
-2. git status --> Should show "nothing to commit, working tree clean"
-3. Add/modify files or code
-4. git status --> Should show "Untracked files:..."
-5. git add .
-6. git status --> Should show "Changes to be committed:"
-7. git commit -m "Comment" .
-8. git status --> Should show "Your branch is ahead of 'origin/main' by 1 commit."
-9. git push -u origin main
-10. git status --> Should show "nothing to commit, working tree clean"
+2. git pull origin main
+3. git status --> Should show "nothing to commit, working tree clean"
+4. Add/modify files or code
+5. git status --> Should show "Untracked files:..."
+6. git add .
+7. git status --> Should show "Changes to be committed:"
+8. git commit -m "Comment" .
+9. git status --> Should show "Your branch is ahead of 'origin/main' by 1 commit."
+10. git push -u origin main
+11. git status --> Should show "nothing to commit, working tree clean"
 
 **For cloning a repository:**
 1. Using HTTPS: ``git clone https://github.com/pararover/multisat-rxj0925.74758.git``
