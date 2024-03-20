@@ -33,4 +33,8 @@
 10. git status --> Should show "nothing to commit, working tree clean"
 
 **For cloning a repository:**
-1. git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+1. Using HTTPS: ``git clone https://github.com/pararover/multisat-rxj0925.74758.git``
+    - HTTPS is best for public repos
+3. Using SSH: ``git clone git@github.com:pararover/multisat-rxj0925.74758.git``
+    - Reference: https://leangaurav.medium.com/setup-ssh-key-with-git-github-clone-private-repo-using-ssh-d983ab7bb956
+    - SSH is best for private repos
