@@ -31,3 +31,6 @@
 8. git status --> Should show "Your branch is ahead of 'origin/main' by 1 commit."
 9. git push -u origin main
 10. git status --> Should show "nothing to commit, working tree clean"
+
+**For cloning a repository:**
+1. git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
