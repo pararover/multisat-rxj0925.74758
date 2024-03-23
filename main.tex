@@ -21,8 +21,10 @@
     \volnum{123}                        % Volume number
     \year{2016}                         % Year of publication
     \pgrange{23--25}                    % Page range
-    \setcounter{page}{23}               % Starting page
-    \lp{25}                             % Last page
+    %\setcounter{page}{23}               % Starting page
+    \setcounter{page}{1}               % Starting page
+    %\lp{25}                             % Last page
+    \lp{\pageref{LastPage}}                             % Last page
 
     %% Sections
     \input{sections/01-introduction}
