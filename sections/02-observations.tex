@@ -1,19 +1,32 @@
 \section{Observations}
-    Journal of observations goes in here, which will contain the observation details of the data used from ASCA, Chandra ACIS, XMM-Newton EPIC-pn and possibly NICER.
+	During the course of our investigation of the continuum spectrum of \source, we leveraged a comprehensive dataset comprising six observations conducted by four distinct satellite missions spanning the years 1994 to 2019. We extracted spectral data within the range 0.2 -- 1.0 keV from each observation in this dataset. This afforded us the opportunity to apply a consistent spectral analysis approach across a broad temporal range and disparate instrumentation platforms. Our primary objective was to identify a robust spectral model capable of providing an acceptable fit to the continuum spectrum of \source.
+	
+	Another motivation for harnessing multi-satellite observations over an extended period was to mitigate potential biases associated with individual instruments and temporal variations in observational conditions, thereby enabling a systematic examination of the source's spectral characteristics, in an attempt to constrain the underlying physical processes driving the observed supersoft X-ray emission.
+	
+	%The amalgamation of observations from diverse satellite missions offered unique insights into the spectral evolution of the supersoft X-ray source over time, shedding light on its dynamic behavior and emission properties. Through rigorous spectral modeling and comparative analysis, we endeavored to establish a robust framework for characterizing the continuum spectrum of the supersoft source, thereby enhancing our understanding of its astrophysical nature and evolutionary trends.
+
+	A summary of the observations used in this study, which included observational data from ASCA \cite{ebisawaAsca2001ApJ}, Chandra \cite{beardaChandra2002AA}, XMM-Newton \cite{motchXmmNewton2002AA} and NICER \cite{orioNicer2022ApJ}, is presented in table \ref{tab:obs-journal}. %Journal of observations goes in here, which will contain the observation details of the data used from ASCA, Chandra ACIS, XMM-Newton EPIC-pn and possibly NICER.
     \begin{table*}[!htb]
     	\centering
     	\caption{Journal of observations}
     	\label{tab:obs-journal}
 		\begin{tabular}{ccccc}
 		\hline
-		\textbf{\begin{tabular}[c]{@{}c@{}}Observation\\ (Obs. ID)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Date\\ (yyyy-mm-dd)\end{tabular}} & \textbf{Satellite:Instrument} & \textbf{MJD} & \textbf{\begin{tabular}[c]{@{}c@{}}Exposure\\ (s)\end{tabular}} \\
+		\textbf{\begin{tabular}[c]{@{}c@{}}Observation\\ (Obs. ID)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Date\\ (yyyy-mm-dd)\end{tabular}} & \textbf{Satellite:Instrument} & \textbf{MJD}$^\dagger$ & \textbf{\begin{tabular}[c]{@{}c@{}}Exposure$^\ddagger$\\ (s)\end{tabular}} \\
 		\hline
-		{43036000}   & {1994-12-22} & {ASCA:SIS1} & {} & {} \\
-		{644}        & {2000-11-14} & {Chandra:ACIS} & {} & {} \\
-		{0111150101} & {2000-12-16} & {XMM-Newton:EPIC-pn} & {} & {} \\
-		{2611020101} & {2019-05-18} & {NICER:XTI} & {} & {} \\
-		{2611020102} & {2019-05-19} & {NICER:XTI} & {} & {} \\
-		{2611020103} & {2019-05-19} & {NICER:XTI} & {} & {} \\
+		{43036000}   & {1994-12-22} & {ASCA:SIS1}          & {49708.56} & {20576} \\
+		{644}        & {2000-11-14} & {Chandra:ACIS}       & {51862.92} & {57400} \\
+		{0111150101} & {2000-12-16} & {XMM-Newton:EPIC-pn} & {51894.46} & {61102} \\
+		{2611020101} & {2019-05-18} & {NICER:XTI}          & {58621.90} & {2531}  \\
+		{2611020102} & {2019-05-19} & {NICER:XTI}          & {58622.03} & {8565}  \\
+		{2611020103} & {2019-05-19} & {NICER:XTI}          & {58623.00} & {9905}  \\
 		\hline
 		\end{tabular}
+		
+		\begin{minipage}{12cm}
+			\vspace{0.1cm}
+			\small $^\dagger$Modified Julian Date
+			
+			\small $^\ddagger$From HEASARC archival query results
+		\end{minipage}
 	\end{table*}
