@@ -33,11 +33,11 @@
     In table \ref{tab:res-fitting}, we present the luminosity, effective temperature and column density for \source\ which are derived after performing the fitting to the NLTE continuum model described in section \ref{sec:reduction-analysis}. We also present the model fit statistics, namely the reduced $\chi^2$ values for each fit. It can be noticed that the same continuum model has been able to provide a good fit to all of the observations in our chosen dataset.
     \begin{table*}[!htb]
     	\centering
-    	\caption{Parameters of \source\ derived from continuum NLTE model\\ from multi-satellite observations.}
+    	\caption{Parameters of \source\ derived from continuum NLTE model from multi-observatory observations.}
     	\label{tab:res-fitting}
     	\begin{tabular}{ccccccc}
 			\hline
-			{\textbf{Satellite}} & {\textbf{Obs. ID}} & {$\boldsymbol{L_*}$} & {\textbf{$\boldsymbol{T_\text{eff}}$ (kK)}} & {\textbf{$\boldsymbol{n_H}$ (cm$^{-2}$)}} & {$\boldsymbol{\chi^2}$/\textbf{d.o.f}} & {$\boldsymbol{\chi^2_\text{reduced}}$} \\
+			{\textbf{Observatory}} & {\textbf{Obs. ID}} & {$\boldsymbol{L_*}$} & {\textbf{$\boldsymbol{T_\text{eff}}$ (kK)}} & {\textbf{$\boldsymbol{n_H}$ (cm$^{-2}$)}} & {$\boldsymbol{\chi^2}$/\textbf{d.o.f}} & {$\boldsymbol{\chi^2_\text{reduced}}$} \\
 			\hline
 			{ASCA} & {43036000} & {TBC} & {$100.6_{70.1}^{140.9}$} & {$0.75_{0.00}^{2.45}$} & {75.8/63} & {1.20} \\
 			{Chandra} & {644} & {TBC} & {$84.0_{70.6}^{92.7}$} & {$1.77_{1.52}^{1.96}$} & {41.0/30} & {1.37} \\
@@ -77,8 +77,26 @@
         \caption{Unfolded spectra with overlaid elemental absorption edges}
         \label{fig:all-uf:abs-edges}
     \end{figure*}
+    
+    \begin{table*}[!htb]
+    	\centering
+    	\caption{Absorption depth $D$ of \source\ derived from identified absorption edges of Ne, Fe, O and N.}
+    	\label{tab:abs-depth}
+		\begin{tabular}{cccccc}
+			\hline
+			\multirow{3}{*}{\textbf{Observatory}} & \multirow{3}{*}{\textbf{Obs. ID}} & \multicolumn{4}{c}{\textbf{Absorption Depth $\boldsymbol{D}$}} \\ \cline{3-6} & & \textbf{Ne $\boldsymbol{K}$ edge} & \textbf{Fe $\boldsymbol{L_3}$ edge} & \textbf{O $\boldsymbol{K}$ edge} & \textbf{N $\boldsymbol{K}$ edge} \\ \cline{3-6} & & \textbf{14.302 \AA} & \textbf{17.509 \AA} & \textbf{23.305 \AA} & \textbf{30.873 \AA} \\
+			\hline
+			{ASCA} & {43036000} & {0.504} & {0.664} & {0.943} & {1.780} \\
+			{Chandra} & {644} & {0.356} & {0.644} & {1.654} & {5.076} \\
+			{XMM-Newton} & {0111150101} & {0.027} & {0.160} & {0.184} & {4.998} \\
+			{NICER} & {2611020101} & {0.652} & {0.080} & {1.771} & {0.010} \\
+			{NICER} & {2611020102} & {1.524} & {0.208} & {0.476} & {1.755} \\
+			{NICER} & {2611020103} & {TBC} & {TBC} & {TBC} & {TBC} \\
+			\hline
+		\end{tabular}
+	\end{table*}
 
-    Because the best-fitted spectrum obtained from the EPIC-pn instrument of XMM-Newton spans the widest range of wavelengths, known absorption edges \cite{bearden1967reevaluation,juett2006high} were identified in the vicinity of the absorption edges in figure \ref{fig:all-uf:abs-edges}. Then they were overlaid on the unfolded spectrum obtained from the EPIC-pn observation. The four absorption edges that could be identified are the K edges of N, O and Ne and the L$_3$ edge of Fe at 30.873 \AA, 23.305 \AA, 14.302 \AA and 17.509 \AA respectively, as displayed in the sub-plots of figure \ref{fig:pn-uf:abs-edges}.
+    Because the best-fitted spectrum obtained from the EPIC-pn instrument of XMM-Newton spans the widest range of wavelengths, known absorption edges \cite{bearden1967reevaluation,juett2006high} were identified in the vicinity of the absorption edges in figure \ref{fig:all-uf:abs-edges}. These are reported in table \ref{tab:abs-depth}. Then they were overlaid on the unfolded spectrum obtained from the EPIC-pn observation. The four absorption edges that could be identified are the K edges of N, O and Ne and the L$_3$ edge of Fe at 30.873 \AA, 23.305 \AA, 14.302 \AA and 17.509 \AA respectively, as displayed in the sub-plots of figure \ref{fig:pn-uf:abs-edges}.
 
     \begin{figure*}[!bht]
         \centering
