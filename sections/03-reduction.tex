@@ -12,7 +12,7 @@
     \end{enumerate}
     The above files were grouped using the FTOOLS task \texttt{grphha}\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/docs/memos/cal_sw_93_010/cal_sw_93_010.pdf}} to have an appropriate minimum number of counts per bin. The resulting spectrum sets were analysed using \textit{Xspec} version 12.13.1.
     
-    \subsection{XMM-Newton EPIC-pn observations}
+    \subsection{XMM-Newton EPIC-pn data reduction}
     	The SSS \source\ was observed by all the instruments, viz. EPIC-MOS 1, EPIC-MOS 2, EPIC-pn and RGS, on-board the XMM-Newton observatory for $\sim 52$ ks on 16 December 2000. Whereas, we had retrieved data from all the instruments, we decided to use only the EPIC-pn data. The reason for this being two-fold:
     	\begin{enumerate}[i.]
     		\item The spectral region of interest is of the lowest energies detectable by EPIC, and the pn detector has a comparatively higher sensitivity than the MOS detectors at lower energies \cite{stecchini2023revisiting,mateos2009statistical}.
@@ -30,11 +30,11 @@
     
     	The source photons were extracted from a circular region having a radius of 30" which is centred at the \source\ centroid position, encompassing about 85-90\% of XMM-Newton's telescope's on-axis PSF\footnote{\url{https://xmm-tools.cosmos.esa.int/external/xmm_user_support/documentation/uhb/onaxisxraypsf.html}}. For the background photons, first the SAS task \texttt{ebkgreg} was executed to obtain an optimum circular background extraction region of radius $\sim$55". The resulting source and background extraction regions are displayed in figure \ref{fig:src-bkg:pn}. The RMF and ARF were generated using the standard SAS tasks \texttt{rmfgen} and \texttt{arfgen}. The spectrum was finally binned to have a minimum of 10 counts/bin using the task \texttt{grphha} in order to make it ready for analysis using Xspec.
     
-    \subsection{ASCA SIS1 observations}
+    \subsection{ASCA SIS1 data reduction}
     
-    \subsection{Chandra ACIS observations}
+    \subsection{Chandra ACIS data reduction}
     
-    \subsection{NICER XTI observations}
-    	The SSS \source\ was observed by the XTI instrument on-board the NICER observatory on the International Space Station (ISS) for a total duration of $\sim 21$ ks on three occasions during 18-19 May 2019.
+    \subsection{NICER XTI data reduction}
+    	The SSS \source\ was observed by the XTI instrument on-board the NICER observatory on the International Space Station (ISS) for a total duration of $\sim 21$ ks on three occasions during 18--19 May 2019.
     	
-    	
+    	The XTI observation dataset and auxiliary files were downloaded from HEASARC. In order to prepare the data for processing, we set up the remote access of the HEASARC CALDB by following the recommended procedure\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_remote_access.html}}. All data reduction commands for NICER science data are made available with the latest versions of HEASoft\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/software/heasoft/}}. The cleaned event files were extracted using the \texttt{nicerl2} command\footnote{\url{https://heasarc.gsfc.nasa.gov/lheasoft/ftools/headas/nicerl2.html}}. They were then loaded into Xselect\footnote{\url{https://heasarc.gsfc.nasa.gov/ftools/xselect/}}, a multipurpose tool for filtering event files and generating images, spectra, and light curves made available as part of HEASoft. This produces the source and background spectrum files in FITS format. The ARF and RMF were generated with the extracted source spectrum files using the \texttt{nicerarf}\footnote{\url{https://heasarc.gsfc.nasa.gov/lheasoft/ftools/headas/nicerarf.html}} and the \texttt{nicerrmf}\footnote{\url{https://heasarc.gsfc.nasa.gov/lheasoft/ftools/headas/nicerrmf.html}} commands respectively. The spectrum set was finally grouped and binned to a minimum of 10 counts/bin using \texttt{grphha} and made ready for analysis using Xspec.
