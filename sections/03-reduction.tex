@@ -1,8 +1,8 @@
 \section{Data Reduction and Analysis} \label{sec:reduction-analysis}
-    \begin{itemize}
-        \item Will contain the details of the data reduction routines used
-        \item Will contain the software tools used for data analysis
-    \end{itemize}
+%    \begin{itemize}
+%        \item Will contain the details of the data reduction routines used
+%        \item Will contain the software tools used for data analysis
+%    \end{itemize}
     The raw data pertaining to all of the observations were downloaded using the online archival query interface at the \textit{High Energy Astrophysics Science Archive Research Center} (HEASARC)\footnote{\url{https://heasarc.gsfc.nasa.gov/db-perl/W3Browse/w3browse.pl}}. The data was reduced finally to \textit{Flexible Image Transport System} (FITS)\footnote{\url{https://fits.gsfc.nasa.gov/standard40/fits_standard40aa-le.pdf}} format using the software tools for the corresponding observatory with recommended settings in the relevant data analysis threads, wherever available. For the final analysis, a set of four files were generated for each of the observations. As a standard practice, these files were given the extensions as per a convention adopted by the authors as follows:
     \begin{enumerate}
     	\item Source spectrum, with file extension \texttt{.src}
@@ -37,8 +37,14 @@
     
     \subsection{Chandra ACIS data reduction}
     	\source\ was observed during 14 November 2000 for a duration of $\sim 57$ ks using the High-Energy Transmission Grating Spectrometer (HETGS) on-board NASA's Chandra X-ray Observatory \cite{beardaChandra2002AA}. The photons were detected with the ACIS-S CCD array at the focal plane. The data analysis was performed in the energy range 0.4--1.0 keV, with 0.4 keV being the lower limit of the HETGS+ACIS-S spectrometer combination. The extraction of the spectrum and response files was performed using \textit{CIAO} version 4.10 and the Chandra calibration database \textit{CALDB} version 4.7.7.
+    	\begin{figure}[!htb]
+	        \centering
+	        \includegraphics[width=0.45\textwidth]{figures/rx-j0925-7-4758_644_src-bkg.png}
+	        \caption{Source and background extraction regions for the Chandra observation of \source}
+	        \label{fig:src-bkg:acis}
+	    \end{figure}
     	
-    	The science data files were downloaded from HEASARC. DS9 was used to identify the source and background regions as being a circular region of radius 0.23' and an annular region of radii 0.28' and 0.57' respectively. The source and background spectra were then extracted in FITS format using the task \texttt{specextract}\footnote{\url{https://cxc.cfa.harvard.edu/ciao/ahelp/specextract.html}} using standard parameters as per the data analysis threads for point-like sources\footnote{\url{https://cxc.cfa.harvard.edu/ciao/threads/pointlike/}}. The relevant RMF and ARF were generated using the \texttt{mkacisrmf}\footnote{\url{https://cxc.cfa.harvard.edu/ciao/ahelp/mkacisrmf.html}} and \texttt{mkarf}\footnote{\url{https://cxc.cfa.harvard.edu/ciao/ahelp/mkarf.html}} tasks respectively. The spectrum set was grouped and binned to have a minimum of 10 counts/bin using the task \texttt{grphha} for subsequent analysis using XSPEC.
+    	All the science data files were downloaded from HEASARC. DS9 was used to identify the source and background regions as being a circular region of radius 0.23' and an annular region of radii 0.28' and 0.57' respectively. The source and background spectra were extracted as FITS files using the task \texttt{specextract}\footnote{\url{https://cxc.cfa.harvard.edu/ciao/ahelp/specextract.html}} using standard parameters as per the data analysis threads for point-like sources\footnote{\url{https://cxc.cfa.harvard.edu/ciao/threads/pointlike/}}. The relevant RMF and ARF were generated using the \texttt{mkacisrmf}\footnote{\url{https://cxc.cfa.harvard.edu/ciao/ahelp/mkacisrmf.html}} and \texttt{mkarf}\footnote{\url{https://cxc.cfa.harvard.edu/ciao/ahelp/mkarf.html}} tasks respectively. The spectrum set was grouped and binned to have a minimum of 10 counts/bin using the task \texttt{grphha} for subsequent analysis using XSPEC.
     
     \subsection{NICER XTI data reduction}
     	\source\ was observed by the XTI instrument on-board the NICER observatory on the International Space Station (ISS) for a total duration of $\sim 21$ ks on three occasions during 18--19 May 2019. All data reduction commands for the science data were performed using NICER-specific tasks are made available with the latest versions of HEASoft\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/software/heasoft/}}.
