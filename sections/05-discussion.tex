@@ -1,18 +1,23 @@
 \section{Discussion and Conclusions}
+	As per current literature on spectral fitting of \source, Bearda et al. (2002) and Motch et al. (2002) had arrived at the conclusion that its spectra cannot be reproduced by NLTE model atmospheres \cite{beardaChandra2002AA,motchXmmNewton2002AA}. Earlier, Hartmann et al. (1999) had applied non-local thermodynamic equilibrium (NLTE) models, which included metal line opacities, to the spectrum extracted from the observations by BeppoSAX LECS of \source\ on 25--26 January 1997 \cite{hartmann1999constraining}, where the best fit was using a model consisting of two spectral components. But nevertheless, they obtained a reduced $\chi^2>2$. In the absence of a proper model describing the emission spectrum, it becomes impossible to
+derive fundamental parameters such as temperature, neutral hydrogen column density and luminosity \cite{motchXmmNewton2002AA}. Hence, obtaining an acceptable fit for RX J0925 spectrum assumes crucial importance at this juncture.
+%	\begin{itemize}
+%		\item To include a detailed description of the physics behind the best fit model
+%		\item To refer to the original publications containing the XSPEC model components where the physics is described
+%		\begin{itemize}
+%			\item For \texttt{TBabs}: Wilms et al. \url{https://iopscience.iop.org/article/10.1086/317016/pdf}
+%			
+%			Now \texttt{phabs}
+%			\item For \texttt{ismabs}: Gatuzz et al. \url{https://iopscience.iop.org/article/10.1088/0004-637X/800/1/29/pdf}
+%			\item For \texttt{edge}: \url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node247.html}
+%			\item For \texttt{rauch}: \url{http://astro.uni-tuebingen.de/~rauch/TMAF/TMAF.html}
+%		\end{itemize}
+%	\end{itemize}
 	
-	\begin{itemize}
-		\item To include a detailed description of the physics behind the best fit model
-		\item To refer to the original publications containing the XSPEC model components where the physics is described
-		\begin{itemize}
-			\item For \texttt{TBabs}: Wilms et al. \url{https://iopscience.iop.org/article/10.1086/317016/pdf}
-			
-			Now \texttt{phabs}
-			\item For \texttt{ismabs}: Gatuzz et al. \url{https://iopscience.iop.org/article/10.1088/0004-637X/800/1/29/pdf}
-			\item For \texttt{edge}: \url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node247.html}
-			\item For \texttt{rauch}: \url{http://astro.uni-tuebingen.de/~rauch/TMAF/TMAF.html}
-		\end{itemize}
-	\end{itemize}
-	An inspection of the distribution of the residual suggests an approximately normal distribution, which can be observed in the best-fit models for all the observations, further supporting the validity of the model fit with values of $1<\chi^2_\text{red}<2$. Such a distribution of the residuals is displayed in figure \ref{fig:pn:resid-hist} for the observations of the EPIC-pn data.
+	\subsection{Best-fit continuum model}
+	The model, chosen for fitting the data from six different observations, consists of a publicly available\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAF/TMAF.html}} NLTE (non-local thermal equilibrium) table model component computed from a grid of stellar model atmosphere fluxes for source emission, a photoelectric absorption model component\footnote{\url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/XSmodelPhabs.html}}, a model component for absorption by inter-stellar medium\footnote{\url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node255.html}} and four model components to account for the presence of absorption edges\footnote{\url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node247.html}}.
+	
+	The values of the fit statistic used, i.e. the reduced $\chi^2$, were all within the acceptable range of $1<\chi^2_\text{reduced}<2$, which warrants a model to be considered a good fit for the observed data. An inspection of the distribution of the residual suggests an approximately normal distribution, which can be observed in the best-fit models for all the observations, further supporting the validity of the model fit. Such a distribution of the residuals is displayed in figure \ref{fig:pn:resid-hist} for the observations of the EPIC-pn data.
 	
 	\begin{figure*}[!htb]
         \centering
@@ -31,7 +36,7 @@
         \label{fig:all-obs:resid-stats}
     \end{figure*}
     
-    As it can be seen in figure \ref{fig:pn:resid-hist}, the kernel density estimate (KDE) function of the distribution closely approximates a normal distribution centred about zero (zero indicating a perfect fit) and with a standard deviation of 0.169, thereby indicating that the observed count rate data can be considered to be random fluctuations which are normally distributed about the best-fit model.
+    As it can be seen in figure \ref{fig:pn:resid-hist}, the kernel density estimate (KDE) function of the distribution closely approximates a normal distribution centred about zero (with zero indicating a perfect fit) and with a standard deviation of 0.169, thereby indicating that the observed count rate data can be considered to be random fluctuations which are normally distributed about the best-fit model. Therefore, the normal distribution of the residuals indicates that they are random and do not have a systematic bias (as is expected of a good fit), thereby further validating that the model fitting performed is satisfactory for all six cases of the observations.
     
     \begin{figure}[!htb]
     	\centering
@@ -42,8 +47,51 @@
     
     In figure \ref{fig:all-obs:resid-gaussfit}, we find the Gaussian distribution fitted to all the observations. This figure shows that the quality of the fit is the best for the earlier Chandra, XMM-Newton and ASCA observations. For the recent NICER observations, the residuals show a wider spread spread about the perfect fit.
     
+    %The facts that the reduced $\chi^2$ values are acceptable for a good fit and the residuals are normally distributed about zero
+    
+    \subsection{NLTE pure H model atmosphere}
+    Rauch model atmosphere \cite{werner1999classical,rauch2003grid,rauch2010nlte}
+    
+%    NLTE (non-local thermal equilibrium) stellar atmosphere models
+%(Werner & Dreizler 1999; Rauch 2003; Rauch & Deetjen 2003;
+%Rauch et al. 2010b). Some of them are available as tables that are
+%suitable for analysis within the XSPEC environment; in general,
+%these models – or pre-calculated grids – differ from each other by
+%the abundance of elements, by their temperature and by the effective
+%gravity (expressed as log g, in cgs units). Once the specific abundance
+%and gravity are chosen, the fitting to the data is parameterised by the
+%effective temperature.
+%Amongst the NLTE stellar atmosphere models, only
+%the one with a pure hydrogen atmosphere (henceforth "pure H") and
+%log g = 7 achieved a similar fit quality
+%Also plotted in Figure 3 are the fit to data by two other NLTE mod-
+%els: "H-Ca", that includes elements from H to Ca with abundance
+%ratios as the Galactic halo and "H-Ni", with elements up to Ni and
+%a particular metal enhanced abundance 14 based on nova V4743 Sgr
+%(Rauch et al. 2010a,b). Even though aware that the H-Ca model
+%was calculated with only approximate formulae to account for Stark
+%broadening and is thus not suitable for precise spectral analysis, we
+%reckon that this should not be an issue given the low energy resolu-
+%tion of the spectra we are analysing. The H-Ni pre-calculated grid
+%is only available for log g = 9, so we use this effective gravity for
+%the H-Ca as well. While a reasonable agreement between data and
+%model is obtained from bbody or pure H, neither of the two other
+%NLTE models are able to fit the data, as evidenced by the residu-
+%als, plotted in logarithm scale for clarity. Particularly, they notably
+%underestimate the observed spectrum for energies beyond 0.45–
+%0.5 keV. It can also be noticed that they demand a much larger effec-
+%tive temperature – specially when compared to the pure H model –,
+%likely due to the absorption caused by elements heavier than helium
+%Besides previously mentioned models bbody,
+%pure H and H-Ca (with halo abundances), we also show some other
+%NLTE (from those publicly available) computed for different abun-
+%dances: "pure He", a pure helium atmosphere model; "H-Ca", this
+%time with solar abundances; and "He+CNO", a model with abundance
+%ratios seen in some PG 1159 type objects (He:C:N:O = 33:50:2:15,
+%e.g. Werner & Herwig 2006).
+    
     \subsection{Relative strengths of absorption edges}
-    Absorption edges are included in an XSPEC model using the multiplicative component named \texttt{edge}\footnote{\url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node247.html}}. On a continuum model, an absorption edge may be modelled as follows:
+    Absorption edges are included in an XSPEC model using the multiplicative component named \texttt{edge}. On a continuum model, an absorption edge may be modelled as follows:
     \begin{align}
     	M(E)=\begin{cases}
     		{1;\quad E\leqslant E_\text{th}} \\
