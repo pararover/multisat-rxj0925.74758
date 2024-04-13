@@ -43,6 +43,15 @@
     In figure \ref{fig:all-obs:resid-gaussfit}, we find the Gaussian distribution fitted to all the observations. This figure shows that the quality of the fit is the best for the earlier Chandra, XMM-Newton and ASCA observations. For the recent NICER observations, the residuals show a wider spread spread about the perfect fit.
     
     \subsection{Relative strengths of absorption edges}
-    Absorption edges are included in an XSPEC model using the multiplicative component named \texttt{edge}.
+    Absorption edges are included in an XSPEC model using the multiplicative component named \texttt{edge}\footnote{\url{https://heasarc.gsfc.nasa.gov/xanadu/xspec/manual/node247.html}}. On a continuum model, an absorption edge may be modelled as follows:
+    \begin{align}
+    	M(E)=\begin{cases}
+    		{1;\quad E\leqslant E_\text{th}} \\
+    		{\exp{\left[ -D\left(\dfrac{E}{E_\text{th}}\right)^{-3} \right]};\quad E> E_\text{th}}
+    	\end{cases} \label{eqn:edge-comp}
+    \end{align}
+    In equation (\ref{eqn:edge-comp}), $E_\text{th}$ is the \textit{threshold energy} and $D$ is the \textit{absorption depth}. The model component is implemented with these two quantities being its parameters. The relative values of the absorption depths enables a comparison of the strengths of the absorption edges.
     
-    The absorption depths calculated from the unfolded spectra, after obtaining the best fit to the model, are presented in table \ref{tab:abs-depth}. In all six observations, the same absorption edges were identified. For the observations made by ASCA, Chandra and XMM-Newton, the identified edges show the same trend with respect to the relative strengths of the absorption depths of these edges, i.e. the N $K$ absorption edge is the strongest, followed by the O $K$ edge, the Fe $L_3$ edge and the Ne $K$ edge with similar strengths. However, this is not the case for the three NICER observations, each of which show different edges to be the strongest.
+    The absorption depths calculated from the unfolded spectra, after obtaining the best fit to the model, are presented in table \ref{tab:abs-depth}. In all six observations, the same absorption edges were identified. For the observations made by ASCA, Chandra and XMM-Newton, the identified edges show the same trend with respect to the relative strengths of the absorption depths of these edges, i.e. the N $K$ absorption edge is the strongest, followed by the O $K$ edge, the Fe $L_3$ edge and the Ne $K$ edge with similar strengths.
+    
+    However, this is not the case for the three NICER observations, each of which show different edges to be the strongest. The reasons for such an inconsistency might range from instrumental effects (such as variations in the detector response with time, or changes in the gain calibration between observations) to issues with data reduction (such as inconsistencies in background subtraction, or inaccuracies in deadtime correction). Because NICER is a relatively new mission, it is a worthwhile exercise to investigate this particular inconsistency in absorption depth strength, which would include a detailed review of the NICER calibration documents, analysis of data from different detector regions, comparison with published data on similar sources and submission of relevant science proposals for new observations.
