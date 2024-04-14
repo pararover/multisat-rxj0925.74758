@@ -1,6 +1,6 @@
 \section{Discussion and Conclusions}
-	As per current literature on spectral fitting of \source, Bearda et al. (2002) and Motch et al. (2002) had arrived at the conclusion that its spectra cannot be reproduced by NLTE model atmospheres \cite{beardaChandra2002AA,motchXmmNewton2002AA}. Earlier, Hartmann et al. (1999) had applied non-local thermodynamic equilibrium (NLTE) models, which included metal line opacities, to the spectrum extracted from the observations by BeppoSAX LECS of \source\ on 25--26 January 1997 \cite{hartmann1999constraining}, where the best fit was using a model consisting of two spectral components. But nevertheless, they obtained a reduced $\chi^2>2$. In the absence of a proper model describing the emission spectrum, it becomes impossible to
-derive fundamental parameters such as temperature, neutral hydrogen column density and luminosity \cite{motchXmmNewton2002AA}. Hence, obtaining an acceptable fit for RX J0925 spectrum assumes crucial importance at this juncture.
+	As per current literature on spectral fitting of the SSS \source, Bearda et al. (2002) and Motch et al. (2002) had arrived at the conclusion that its spectra cannot be reproduced by NLTE model atmospheres \cite{beardaChandra2002AA,motchXmmNewton2002AA}. Earlier, Hartmann et al. (1999) had applied non-local thermodynamic equilibrium (NLTE) models, which included metal line opacities, to the spectrum extracted from the observations by BeppoSAX LECS of \source\ on 25--26 January 1997 \cite{hartmann1999constraining}, where the best fit was using a model consisting of two spectral components. But nevertheless, they obtained a reduced $\chi^2>2$. In the absence of a proper model describing the emission spectrum, it becomes impossible to
+derive fundamental parameters such as temperature, neutral hydrogen column density and luminosity \cite{motchXmmNewton2002AA}. Hence, obtaining an acceptable fit for \source\ spectrum assumes crucial importance at this juncture.
 %	\begin{itemize}
 %		\item To include a detailed description of the physics behind the best fit model
 %		\item To refer to the original publications containing the XSPEC model components where the physics is described
@@ -50,17 +50,10 @@ derive fundamental parameters such as temperature, neutral hydrogen column densi
     %The facts that the reduced $\chi^2$ values are acceptable for a good fit and the residuals are normally distributed about zero
     
     \subsection{NLTE pure H model atmosphere}
-    Rauch model atmosphere \cite{werner1999classical,rauch2003grid,rauch2010nlte}
+    The supersoft X-ray emission of \source\ was modelled using an NLTE stellar atmosphere model \cite{werner1999classical}. Some of these are made available as tables in appropriate FITS format to be used with the XSPEC table model component \texttt{atable} \cite{rauch2003grid,rauch2010nlte}. These models, which are essentially pre-calculated grids, vary from one another in terms of the elemental abundances, the effective temperature $T_\text{eff}$ and the effective gravity $\log{g}$ (where the gravitational acceleration $g$ is expressed in cgs units). Choosing a particular FITS file fixed the specific elemental abundance and effective gravity. Then the fitting of the model to the data is performed by using the effective temperature $T_\text{eff}$ and the redshift $z$ as parameters.
     
-%    NLTE (non-local thermal equilibrium) stellar atmosphere models
-%(Werner & Dreizler 1999; Rauch 2003; Rauch & Deetjen 2003;
-%Rauch et al. 2010b). Some of them are available as tables that are
-%suitable for analysis within the XSPEC environment; in general,
-%these models – or pre-calculated grids – differ from each other by
-%the abundance of elements, by their temperature and by the effective
-%gravity (expressed as log g, in cgs units). Once the specific abundance
-%and gravity are chosen, the fitting to the data is parameterised by the
-%effective temperature.
+    During the analysis of the spectra from all six observations of \source, we found that only an NLTE model with a pure hydrogen atmosphere for which $\log{g}=7$ was able to provide a common model continuum spectrum that gave acceptable fit quality for all six observations. This model\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAF/flux_H.html}}, developed and made publicly available by Rauch et al., has, as the core of its computational framework, the detailed representation of hydrogen atoms within stellar atmospheres. Using the T\:{u}bingen NLTE Model Atmosphere Package (TMAP)\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAP/TMAP.html}},
+    
 %Amongst the NLTE stellar atmosphere models, only
 %the one with a pure hydrogen atmosphere (henceforth "pure H") and
 %log g = 7 achieved a similar fit quality
