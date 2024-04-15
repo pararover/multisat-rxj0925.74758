@@ -50,90 +50,137 @@ derive fundamental parameters such as temperature, neutral hydrogen column densi
     %The facts that the reduced $\chi^2$ values are acceptable for a good fit and the residuals are normally distributed about zero
     
     \subsection{NLTE pure H model atmosphere}
-    In a classical stellar atmosphere, which is a plane-parallel, horizontally homogenous atmosphere in hydrostatic and radiative equilibrium, a non-LTE (or NLTE) description refers to a scenario where the energy levels of some selected species may be allowed to depart from their local thermodynamic equilibrium (LTE) values \cite{hubeny2014theory}. Given below are the structural equations that are used to model an NLTE atmosphere.
-   
-	In its second-order form, the \textit{radiative transfer equation} is
-	\begin{align}
-		\npdvt{2}{(f_\nu J_\nu)}{\tau_\nu}=J_\nu-S_\nu \label{eqn:rte-2nd-order}
-	\end{align}
-	where $J_\nu$ is the \textit{mean intensity} over all solid angles, $\tau_\nu$ the monochromatic \textit{optical depth}, $f_\nu$ the variable \textit{Eddington factor} and $S_\nu$ the \textit{source function}. The upper and lower boundary conditions on equation (\ref{eqn:rte-2nd-order}) are respectively
-	\begin{align}
-		&\left[ \pdvt{(f_\nu J_\nu)}{\tau_\nu} \right]_0=g_\nu J_\nu(0)-H_\nu^\text{ext} \label{eqn:rte-upper-bc} \\
-		&\left[ \pdvt{(f_\nu J_\nu)}{\tau_\nu} \right]_{\tau_\text{max}}=H_\nu^+-\dfrac{1}{2}J_\nu \label{eqn:rte-lower-bc}
-	\end{align}
-	where $g_\nu$ is the \textit{surface Eddington factor}, $H_\nu^\text{ext}$, $H_\nu^+$ being the \textit{first angular moment} of specific intensity taken at the respective upper and lower boundaries of the current stellar atmospheric layer.
-	
-	The \textit{hydrostatic equilibrium equation} is re-cast as
-	\begin{align}
-		\dvt{P_\text{gas}}{m}=g-\dfrac{4\pi}{c}\integ{0}{\infty}{\dvt{K_\nu}{m}}{\nu}=g-\dfrac{4\pi}{c}\integ{0}{\infty}{\dfrac{\chi_\nu}{\rho}H_\nu}{\nu} \label{eqn:hyd-equil}
-	\end{align}
-	where $K_\nu$ is the \textit{second angular moment} of specific intensity, $\chi_\nu$ is the \textit{absorption coefficient} and $m$ is the \textit{Lagrangian mass}. In equation (\ref{eqn:hyd-equil}), the total pressure is composed of three parts: the \textit{gas pressure} $P_\text{gas}$, the \textit{radiation pressure} represented by the integrals on the right-hand side and the \textit{microturbulent pressure} $P_\text{turb}$ being ignored.
-	
-	The \textit{radiative equilibrium equation} is an expression of the conservation of total radiant flux. It may be written in an \textit{integral form} -- more accurate at upper atmospheric layer, or in a \textit{differential form} -- more accurate in deeper layers. To improve the accuracy, numerical algorithms implement a linear combination of both form as
-	\begin{align}
-		\alpha&\left[ \integ{0}{\infty}{(\kappa_\nu J_\nu-\eta_\nu)}{\nu} \right] \nonumber\\
-			&+\beta\left[ \integ{0}{\infty}{\dvt{(f_\nu J_\nu)}{\tau_\nu}}{\nu}-\dfrac{\sigma_R}{4\pi}T_\text{eff}^4 \right]=0 \label{eqn:rad-equil}
-	\end{align}
-	where $\sigma_R$ is the Stefan-Boltzmann constant, $\kappa_\nu$, $\eta_\nu$ are the thermal absorption and emission coefficients respectively. In equation (\ref{eqn:rad-equil}) above, the term within the first pair of brackets contains the integral form and that within the second pair contains the differential form. The empirical coefficients $\alpha$, $\beta$ enable a transition from upper layers ($\alpha\rightarrow 1$, $\beta\rightarrow 0$) to lower layers ($\alpha\rightarrow 0$, $\beta\rightarrow 1$) -- such a transition is taken to be around the depth where the Rosseland mean optical depth is $\sim 1$.
-	
-	The \textit{kinetic equilibrium equations} (or \textit{rate equations}) are written for each chemical species, after having first selected those species which are to be considered to deviate from LTE. For any species, these equations may be represented by a matrix equation as
-	\begin{align}
-		\vsmat{A}\cdot\vsvec{n}=\vsvec{b} \label{eqn:kin-equil}
-	\end{align}
-	where the elements of the \textit{rate matrix} $\vsmat{A}$ are given as
-	\begin{align*}
-		\vmelem{A}{i}{j}&=\sum_{j\neq i}{(R_{ij}+C_{ij})} \\
-		\vmelem{A}{i}{j}&=-(R_{ji}+C_{ji}),\text{ for }j\neq i\text{ and }i\neq k \\
-		\vmelem{A}{k}{j}&=1+S_j
-	\end{align*}
-	with $k$ being the index of the \textit{characteristic level} and $R_{ij}$, $C_{ij}$ the radiative and collisional rates respectively between transition levels $i$ and $j$. It must be noted that $R_{ij}$'s implicitly involve the \textit{Saha-Boltzmann factor} $\Phi_i(T)$ which comes into play for \textit{bound-free transitions}, i.e. absorption edges
-	\begin{align}
-		\Phi_i(T)=\dfrac{g_i}{2g_1^+}\left( \dfrac{h^2}{2\pi m_e kT} \right)^{3/2}e^{(E_I-E_i)/kT} \label{eqn:saha-boltz-factor}
-	\end{align}
-	where $E_I$ is the ionization potential of the ion to which level $i$ belongs, $E_i$ the excitation energy of level $i$ and $g_1^+$ the statistical weight of the ground state of the next ion and $m_e$ the electronic mass. In equation (\ref{eqn:kin-equil}), $\vsvec{n}$ is the vector of populations of levels and the vector $\vsvec{b}$ has a single non-zero element corresponding to the characteristic level $k$ as
-	\begin{align*}
-		\vvelem{b}{i}=(N-n_e)\alpha_I\delta_{ki}
-	\end{align*}
-	where $N$ is the net populations of all levels, $n_e$ the number density of electrons and $\alpha_I$ the fractional abundance of the species $I$.
-	
-	The overall electrical neutrality of the medium is expressed by the \textit{charge conservation equation} as
-	\begin{align}
-		\sum_i{n_iZ_i}-n_e=0 \label{eqn:ch-cons}
-	\end{align}
-	where $Z_i$ is the charge associated with level $i$.
-	
-	The \textit{mass density}, which is related to the atomic level populations, can be expressed as
-	\begin{align}
-		\rho=(N-n_e)\mu m_H \label{eqn:mass-dens}
-	\end{align}
-	where $\mu$ is the mean molecular weight and $m_H$ is the mass of the H atom. A quantity known as the \textit{fictitious massive particle density} is defined as
-	\begin{align}
-		n_m\equiv(N-n_e)\mu \label{eqn:fict-mass-dens}
-	\end{align}
-	which then enables the mass density to be simply written as $\rho=n_m m_H$.
-	
-	The absorption coefficient included in equation (\ref{eqn:hyd-equil}) is written as the combination
-	\begin{align}
-		\chi_\nu=\kappa_\nu+\kappa_\nu^\text{sc} \label{eqn:abs-coeff}
-	\end{align}
-	where $\kappa_\nu$ is also known as the \textit{extinction coefficient} and $\kappa_\nu^\text{sc}$ the \textit{scattering coefficient}. The extinction coefficient is given as
-	\begin{align}
-		\kappa_\nu=\sum_{i}&\sum_{j>i}{[n_i-n_jG_{ij}(\nu)]\sigma_{ij}(\nu)} \nonumber\\
-						&\sum_{l}{n_en_l\sigma_{ll}(\nu,T)\left( 1-e^{-h\nu/kT} \right)}+\kappa_\nu^\text{addl} \label{eqn:ext-coeff}
-	\end{align}
-	where the first term represents the contribution from \textit{bound-bound transitions} (i.e. absorption lines), the second represents that from \textit{bound-free transitions} (i.e. absorption edges) and the last term lumps together any additional opacity not written as detailed transitions. Here $G_{ij}=\frac{w_ig_i}{w_jg_j}$, with $g_i,g_j$ and $w_i,w_j$ being the respective degeneracies and statistical weights of levels $i$ and $j$ respectively. Also $\sigma_{ij}$ is the opacity of the transition between levels $i$ and $j$.
-	
-	The scattering coefficient in equation (\ref{eqn:abs-coeff}) is given as
-	\begin{align}
-		\kappa_\nu^\text{sc}=n_e\sigma_e + \sum_i{n_{\text{Ray},i}\sigma_{\text{Ray},i}} \label{eqn:sca-coeff}
-	\end{align}
-	where $\sigma_e$, $\sigma_{\text{Ray},i}$ are the Thomson and Rayleigh scattering cross-sections respectively. For pure-hydrogen atmospheres with high temperatures, the Rayleigh scattering is negligible because the hydrogen atoms are expected to be fully ionized.
+    In a classical stellar atmosphere, which is a plane-parallel, horizontally homogenous atmosphere in hydrostatic and radiative equilibrium, a non-LTE (or NLTE) description refers to a scenario where the energy levels of some selected species may be allowed to depart from their local thermodynamic equilibrium (LTE) values \cite{hubeny2014theory}.
+    	\subsubsection{Structural equations}
+    	\quad\\	
+	    Given below are the structural equations that are used to model an NLTE atmosphere.
+	   
+		In its second-order form, the \textit{radiative transfer equation} is
+		\begin{align}
+			\npdvt{2}{(f_\nu J_\nu)}{\tau_\nu}=J_\nu-S_\nu \label{eqn:rte-2nd-order}
+		\end{align}
+		where $J_\nu$ is the \textit{mean intensity} over all solid angles, $\tau_\nu$ the monochromatic \textit{optical depth}, $f_\nu$ the variable \textit{Eddington factor} and $S_\nu$ the \textit{source function}. The upper and lower boundary conditions on equation (\ref{eqn:rte-2nd-order}) are respectively
+		\begin{align}
+			&\left[ \pdvt{(f_\nu J_\nu)}{\tau_\nu} \right]_0=g_\nu J_\nu(0)-H_\nu^\text{ext} \label{eqn:rte-upper-bc} \\
+			&\left[ \pdvt{(f_\nu J_\nu)}{\tau_\nu} \right]_{\tau_\text{max}}=H_\nu^+-\dfrac{1}{2}J_\nu \label{eqn:rte-lower-bc}
+		\end{align}
+		where $g_\nu$ is the \textit{surface Eddington factor}, $H_\nu^\text{ext}$, $H_\nu^+$ being the \textit{first angular moment} of specific intensity taken at the respective upper and lower boundaries of the current stellar atmospheric layer.
+		
+		The \textit{hydrostatic equilibrium equation} is re-cast as
+		\begin{align}
+			\dvt{P_\text{gas}}{m}=g-\dfrac{4\pi}{c}\integ{0}{\infty}{\dvt{K_\nu}{m}}{\nu}=g-\dfrac{4\pi}{c}\integ{0}{\infty}{\dfrac{\chi_\nu}{\rho}H_\nu}{\nu} \label{eqn:hyd-equil}
+		\end{align}
+		where $K_\nu$ is the \textit{second angular moment} of specific intensity, $\chi_\nu$ is the \textit{absorption coefficient} and $m$ is the \textit{Lagrangian mass}. In equation (\ref{eqn:hyd-equil}), the total pressure is composed of three parts: the \textit{gas pressure} $P_\text{gas}$, the \textit{radiation pressure} represented by the integrals on the right-hand side and the \textit{microturbulent pressure} $P_\text{turb}$ being ignored.
+		
+		The \textit{radiative equilibrium equation} is an expression of the conservation of total radiant flux. It may be written in an \textit{integral form} -- more accurate at upper atmospheric layer, or in a \textit{differential form} -- more accurate in deeper layers. To improve the accuracy, numerical algorithms implement a linear combination of both form as
+		\begin{align}
+			\alpha&\left[ \integ{0}{\infty}{(\kappa_\nu J_\nu-\eta_\nu)}{\nu} \right] \nonumber\\
+				&+\beta\left[ \integ{0}{\infty}{\dvt{(f_\nu J_\nu)}{\tau_\nu}}{\nu}-\dfrac{\sigma_R}{4\pi}T_\text{eff}^4 \right]=0 \label{eqn:rad-equil}
+		\end{align}
+		where $\sigma_R$ is the Stefan-Boltzmann constant, $\kappa_\nu$, $\eta_\nu$ are the thermal absorption and emission coefficients respectively. In equation (\ref{eqn:rad-equil}) above, the term within the first pair of brackets contains the integral form and that within the second pair contains the differential form. The empirical coefficients $\alpha$, $\beta$ enable a transition from upper layers ($\alpha\rightarrow 1$, $\beta\rightarrow 0$) to lower layers ($\alpha\rightarrow 0$, $\beta\rightarrow 1$) -- such a transition is taken to be around the depth where the Rosseland mean optical depth is $\sim 1$.
+		
+		The \textit{kinetic equilibrium equations} (or \textit{rate equations}) are written for each chemical species, after having first selected those species which are to be considered to deviate from LTE. For any species, these equations may be represented by a matrix equation as
+		\begin{align}
+			\vsmat{A}\cdot\vsvec{n}=\vsvec{b} \label{eqn:kin-equil}
+		\end{align}
+		where the elements of the \textit{rate matrix} $\vsmat{A}$ are given as
+		\begin{align*}
+			\vmelem{A}{i}{j}&=\sum_{j\neq i}{(R_{ij}+C_{ij})} \\
+			\vmelem{A}{i}{j}&=-(R_{ji}+C_{ji}),\text{ for }j\neq i\text{ and }i\neq k \\
+			\vmelem{A}{k}{j}&=1+S_j
+		\end{align*}
+		with $k$ being the index of the \textit{characteristic level} and $R_{ij}$, $C_{ij}$ the radiative and collisional rates respectively between transition levels $i$ and $j$. It must be noted that $R_{ij}$'s implicitly involve the \textit{Saha-Boltzmann factor} $\Phi_i(T)$ which comes into play for \textit{bound-free transitions}, i.e. absorption edges
+		\begin{align}
+			\Phi_i(T)=\dfrac{g_i}{2g_1^+}\left( \dfrac{h^2}{2\pi m_e kT} \right)^{3/2}e^{(E_I-E_i)/kT} \label{eqn:saha-boltz-factor}
+		\end{align}
+		where $E_I$ is the ionization potential of the ion to which level $i$ belongs, $E_i$ the excitation energy of level $i$ and $g_1^+$ the statistical weight of the ground state of the next ion and $m_e$ the electronic mass. In equation (\ref{eqn:kin-equil}), $\vsvec{n}$ is the vector of populations of levels and the vector $\vsvec{b}$ has a single non-zero element corresponding to the characteristic level $k$ as
+		\begin{align*}
+			\vvelem{b}{i}=(N-n_e)\alpha_I\delta_{ki}
+		\end{align*}
+		where $N$ is the net populations of all levels, $n_e$ the number density of electrons and $\alpha_I$ the fractional abundance of the species $I$.
+		
+		The overall electrical neutrality of the medium is expressed by the \textit{charge conservation equation} as
+		\begin{align}
+			\sum_i{n_iZ_i}-n_e=0 \label{eqn:ch-cons}
+		\end{align}
+		where $Z_i$ is the charge associated with level $i$.
+		
+		The \textit{mass density}, which is related to the atomic level populations, can be expressed as
+		\begin{align}
+			\rho=(N-n_e)\mu m_H \label{eqn:mass-dens}
+		\end{align}
+		where $\mu$ is the mean molecular weight and $m_H$ is the mass of the H atom. A quantity known as the \textit{fictitious massive particle density} is defined as
+		\begin{align}
+			n_m\equiv(N-n_e)\mu \label{eqn:fict-mass-dens}
+		\end{align}
+		which then enables the mass density to be simply written as $\rho=n_m m_H$.
+		
+		The absorption coefficient included in equation (\ref{eqn:hyd-equil}) is written as the combination
+		\begin{align}
+			\chi_\nu=\kappa_\nu+\kappa_\nu^\text{sc} \label{eqn:abs-coeff}
+		\end{align}
+		where $\kappa_\nu$ is also known as the \textit{extinction coefficient} and $\kappa_\nu^\text{sc}$ the \textit{scattering coefficient}. The extinction coefficient is given as
+		\begin{align}
+			\kappa_\nu=\sum_{i}&\sum_{j>i}{[n_i-n_jG_{ij}(\nu)]\sigma_{ij}(\nu)} \nonumber\\
+							&+\sum_{l}{n_en_l\sigma_{ll}(\nu,T)\left( 1-e^{-h\nu/kT} \right)}+\kappa_\nu^\text{addl} \label{eqn:ext-abs-coeff}
+		\end{align}
+		where the first term represents the contribution from \textit{bound-bound transitions} (i.e. absorption lines), the second represents that from \textit{bound-free transitions} (i.e. absorption edges) and the last term lumps together any additional opacity not written as detailed transitions. Here $G_{ij}=\frac{w_ig_i}{w_jg_j}$, with $g_i,g_j$ and $w_i,w_j$ being the respective degeneracies and statistical weights of levels $i$ and $j$ respectively. Also $\sigma_{ij}$ is the opacity of the transition between levels $i$ and $j$.
+		
+		The scattering coefficient in equation (\ref{eqn:abs-coeff}) is given as
+		\begin{align}
+			\kappa_\nu^\text{sc}=n_e\sigma_e + \sum_i{n_{\text{Ray},i}\sigma_{\text{Ray},i}} \label{eqn:sca-abs-coeff}
+		\end{align}
+		where $\sigma_e$, $\sigma_{\text{Ray},i}$ are the Thomson and Rayleigh scattering cross-sections respectively. For pure-hydrogen atmospheres with high temperatures, the Rayleigh scattering is negligible because the hydrogen atoms are expected to be fully ionized.
+		
+		In a similar manner, the \textit{total emission coefficient} is also expressed as a sum of thermal and scattering contributions as
+		\begin{align}
+			\eta_\nu^\text{total}=\eta_\nu+\eta_\nu^\text{sc} \label{eqn:em-coeff}
+		\end{align}
+		where
+		\begin{align}
+			\eta_\nu=\left(\dfrac{2h\nu^3}{c^2}\right)&\left[ \sum_{i}\sum_{j>i}{n_jG_{ij}(\nu)\sigma_{ij}(\nu)} \right. \nonumber\\
+							&\left.+\sum_{l}{n_en_l\sigma_{ll}(\nu,T)e^{-h\nu/kT}}\right]+\eta_\nu^\text{addl} \label{eqn:ext-em-coeff}
+		\end{align}
+		in which, again, any additional emissivity is lumped together and given using the Planck function as $\eta_\nu^\text{addl}=\kappa_\nu^\text{addl}B_\nu$.
+		
+		Finally, taking into account the \textit{convective flux} $F_\text{conv}$ (if any) within the differential form of the radiative equilibrium equation (\ref{eqn:rad-equil}) as
+		\begin{align}
+			\integ{0}{\infty}{\dvt{(f_\nu J_\nu)}{\tau_\nu}}{\nu}+\dfrac{F_\text{conv}}{4\pi}=\dfrac{\sigma_R}{4\pi}T_\text{eff}^4 \label{eqn:rad-equil-2}
+		\end{align}
+		Differentiating equation (\ref{eqn:rad-equil-2}) with respect to the Lagrangian mass $m$ finally gives the \textit{radiative+convective equilibrium equation} as
+		\begin{align}
+			\integ{0}{\infty}{(\kappa_\nu J_\nu-\eta_\nu)}{\nu}+\dfrac{\rho}{4\pi}\dvt{F_\text{conv}}{m}=0 \label{eqn:rad-conv-equil}
+		\end{align}
+		
+		\subsubsection{Numerical solution using ALI}
+		\quad\\
+		Accelerated lambda iteration (ALI) is a technique used to numerically solve the radiative transfer problem, particularly in the context of stellar atmosphere modeling \cite{hubeny2003accelerated}. It accelerates the computational process by introducing a correction term that takes into account the influence of previous iterations. A simplified procedural overview of this scheme is as follows:
+		\begin{enumerate}
+			\item \textit{Initial guess}: Start with an initial guess for the specific intensity of radiation at different frequencies within the atmosphere. \label{step:ali-init-guess}
+			\item \textit{Lambda iteration}: Calculate how the radiation interacts with the atmosphere using the current guess for intensity, considering the absorption and emission by the species in the atmosphere. \label{step:ali-lmda-itr}
+			\item \textit{Correction term}: Instead of simply accepting the result from step \ref{step:ali-lmda-itr}, ALI calculates a correction term based on the difference between the current guess and the result. \label{step:ali-corr-term}
+			\item \textit{Update guess}: Add this correction term to the initial guess to obtain a new estimate for the intensity. \label{step:ali-update-guess}
+			\item \textit{Iterate}: Repeat steps \ref{step:ali-lmda-itr}--\ref{step:ali-update-guess} until the solution converges, meaning the intensity values no longer change significantly between iterations. \label{step:ali-iterate}
+		\end{enumerate}
+		
+		In order to numerically solve the structural equations for NLTE, they are first discretized over all three continuous variables: optical depth $\tau$, frequency $\nu$ and angle $\theta$. These discretized structural equations, together with a number of auxiliary relations, form a system of highly coupled, non-linear equations. Then the \textit{complete linearization scheme} \cite{auer1970non} is used to treat all equations on the same footing, thus solving all structural equations simultaneously. The T\"{u}bingen NLTE Model Atmosphere Package (TMAP)\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAP/TMAP.html}} code uses ALI to calculate the stellar atmosphere by taking into account metal line-blanketing. With an extended grid of such atmospheres of pure-hydrogen models, synthetic spectral were calculated and these are eventually used as table models in XSPEC in the present work to simulate the source emission.
     
-    The supersoft X-ray emission of \source\ was modelled using an NLTE stellar atmosphere model \cite{werner1999classical}. Some of these are made available as tables in appropriate FITS format to be used with the XSPEC table model component \texttt{atable} \cite{rauch2003grid,rauch2010nlte}. These models, which are essentially pre-calculated grids, vary from one another in terms of the elemental abundances, the effective temperature $T_\text{eff}$ and the effective gravity $\log{g}$ (where the gravitational acceleration $g$ is expressed in cgs units). Choosing a particular FITS file fixed the specific elemental abundance and effective gravity. Then the fitting of the model to the data is performed by using the effective temperature $T_\text{eff}$ and the redshift $z$ as parameters.
+    \subsection{Inferences from results}
+    In the current work, we are trying to understand the supersoft spectrum of \source, across observations from 1994 to 2019. The idea is to develop a robust model that explains its supersoft spectrum over different time scales and different observing instruments. The best-fit model consists of XSPEC model components which consider various factors affecting the observed spectrum:
+    \begin{enumerate}[a)]
+   		\item \texttt{atable\{}pure-H NLTE with $\log{g}=7$\texttt{\}}: for the actual radiation emitted by \source
+   		\item \texttt{edge}: for specific wavelengths where bound-free absorption is particularly strong, leading to absorption edges
+   		\item \texttt{phabs}: for describing the photoelectric absorption at the source itself.
+   		\item \texttt{ismabs}: for describing how light interacts with the intervening inter-stellar medium before reaching us
+   	\end{enumerate}
+    	
+    Initially, a simple blackbody model failed to fit the spectrum. Blackbodies emit a characteristic spectrum based on temperature, and it seems this doesn't accurately represent the complex emission from \source. Then the supersoft X-ray emission of \source\ was modelled using an NLTE stellar atmosphere model \cite{werner1999classical}. Some of these are made available as tables in appropriate FITS format to be used with the XSPEC table model component \texttt{atable} \cite{rauch2003grid,rauch2010nlte}. These models, which are essentially pre-calculated grids, vary from one another in terms of the elemental abundances, the effective temperature $T_\text{eff}$ and the effective gravity $\log{g}$ (where the gravitational acceleration $g$ is expressed in cgs units). Choosing a particular FITS file fixed the specific elemental abundance and effective gravity. Then the fitting of the model to the data is performed by using the effective temperature $T_\text{eff}$ and the redshift $z$ as parameters.
     
-    During the analysis of the spectra from all six observations of \source, we found that only an NLTE model with a pure hydrogen atmosphere for which $\log{g}=7$ was able to provide a common model continuum spectrum that gave acceptable fit quality for all six observations. This model\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAF/flux_H.html}}, developed and made publicly available by Rauch et al., has, as the core of its computational framework, the detailed representation of hydrogen atoms within stellar atmospheres. Using the T\"{u}bingen NLTE Model Atmosphere Package (TMAP)\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAP/TMAP.html}},  plane-parallel, static, pure-hydrogen models were calculated, employing several simplifying assumptions to create a tractable model of the stellar atmosphere. Here, hydrogen is represented as a model atom, focussing on energy levels up to $n=14$ under NLTE conditions, neglecting the rapid depopulation of higher levels due to a compact star's strong gravity. Certain complexities like the exact treatment of light absorption are approximated for efficiency. Finally, the model only extends to a specific optical depths of
+    During the analysis of the spectra from all six observations of \source, we found that only an NLTE model with a pure hydrogen atmosphere for which $\log{g}=7$ was able to provide a common model continuum spectrum that gave acceptable fit quality for all six observations. This model\footnote{\url{http://astro.uni-tuebingen.de/~rauch/TMAF/flux_H.html}}, developed and made publicly available by Rauch et al., has, as the core of its computational framework, the detailed representation of hydrogen atoms within stellar atmospheres. Using the TMAP,  plane-parallel, static, pure-hydrogen models were calculated, employing several simplifying assumptions to create a tractable model of the stellar atmosphere. Here, hydrogen is represented as a model atom, focussing on energy levels up to $n=14$ under NLTE conditions, neglecting the rapid depopulation of higher levels due to a compact star's strong gravity. Certain complexities like the exact treatment of light absorption are approximated for efficiency. Finally, the model only extends to a specific optical depths of
     $$\log{\tau}=-8\dots+4$$
     within the atmosphere where light can travel freely, and utilizes increased detail for calculations in specific wavelength range to ensure accuracy in that region. For the synthetic spectra, the line-broadening tables of Lemke (1997) were used \cite{lemke1997extended}.
+    
+    As it can be seen from table \ref{tab:res-fitting} and figure \ref{fig:L-Teff}, the effective temperature is obtained to be $\sim$100,000 K for all six observations and luminosity is computed to be of the order of $10^{41}$ erg s$^{-1}$, which is about 3 orders of magnitude higher that what had been reported earlier \cite{hartmann1999constraining}.
     
 %The short-wavelength continuum benefits from the use of ff-cross sections from Sutherland (1998) which replace the older fit formula from Mihalas (1967). More importantly, the continuum flux depends on the treatment of the bf-transitions. Using the full formalism of Karzas & Latter (1961) raises the flux at 44 Å by 33\% compared with spectra calculated with the older Seaton formula and Gaunt factor (see Fig. 2). We find very good agreement of our results with the short-wavelength continuum of Barstow et al. (2003). Given the sensitivity of the soft X-ray fluxes to details of the calculation, we caution against the indiscriminate comparison of different versions of model spectra used over the decades in the calibration of various satellite instruments sensitive in the soft X-ray regime.
 	
