@@ -26,3 +26,18 @@
 \newcommand{\source}{RX J0925.7-4758}
 
 \renewcommand{\arraystretch}{1.8}
+
+% ------------------ Math commands ------------------
+\newcommand{\dif}[1]{\mathrm{d} {#1}}
+
+\newcommand{\dvt}[2]{\dfrac{\mathrm{d} {#1}}{\mathrm{d} {#2}}}
+\newcommand{\pdvt}[2]{\dfrac{\partial {#1}}{\partial {#2}}}
+\newcommand{\npdvt}[3]{\dfrac{\partial^{#1}{#2}}{\partial {#3}^{#1}}}
+
+\newcommand{\integ}[4]{\int_{#1}^{#2}{#3\dif{#4}}}
+
+\newcommand{\vsmat}[1]{\boldsymbol{\mathcal{#1}}}
+\newcommand{\vsvec}[1]{\boldsymbol{\mathrm{#1}}}
+
+\newcommand{\vmelem}[3]{\mathcal{#1}_{#2}{#3}}
+\newcommand{\vvelem}[2]{\mathrm{#1}_{#2}}
