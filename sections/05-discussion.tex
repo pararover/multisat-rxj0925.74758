@@ -19,31 +19,38 @@
 	\subsection{Best-fit continuum model}
 	The model, chosen for fitting the data from six different observations, consists of a publicly available NLTE (non-local thermal equilibrium) table model component computed from a grid of stellar model atmosphere fluxes for source emission$^{22}$, a photoelectric absorption model component$^{23}$, a model component for absorption by inter-stellar medium$^{24}$ and four model components to account for the presence of absorption edges$^{25}$.
 	
-	The values of the fit statistic used, i.e. the reduced $\chi^2$, were all within the acceptable range of $1<\chi^2_\text{reduced}<2$, which warrants a model to be considered a good fit for the observed data. An inspection of the distribution of the residual suggests an approximately normal distribution, which can be observed in the best-fit models for all the observations, further supporting the validity of the model fit. Such a distribution of the residuals is displayed in figure \ref{fig:pn:resid-hist} for the observations of the EPIC-pn data.
+	The values of the fit statistic used, i.e. the reduced $\chi^2$, were all within the acceptable range of $1<\chi^2_\text{reduced}<2$, which warrants a model to be considered a good fit for the observed data. An inspection of the distribution of the residuals, which are plotted in figure \ref{fig:all-obs:resid-stats}(a), suggests an approximately normal distribution, which can be observed in the best-fit models for all the observations, further supporting the validity of the model fit. Such a distribution of the residuals is displayed in figure \ref{fig:all-obs:resid-stats}(b) for the observations of the EPIC-pn data.
 	
 	\begin{figure*}[!htb]
         \centering
-        \begin{subfigure}[b]{0.51\textwidth}
-            \includegraphics[width=\textwidth]{figures/resid/mr-vel-0111150101-pn_resid.png}
-            \caption{Residuals between data and best-fit model for EPIC-pn observations}
-            \label{fig:pn:resid}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[b]{0.39\textwidth}
-            \includegraphics[width=\textwidth]{figures/resid/mr-vel-0111150101-pn_resid-hist.png}
-	        \caption{Distribution of residuals from the best-fit model to EPIC-pn observations, along with the KDE function and fitted Gaussian}
-	        \label{fig:pn:resid-hist}
-        \end{subfigure}
-        \caption{Residual statistics from best-fit model to all observations}
+        \includegraphics[width=\textwidth]{figures/resid/mr-vel-0111150101-pn_stats.png}
+        \caption{Residual statistics from best-fit model to all observations. (\textbf{a}) Residuals between data and best-fit model for EPIC-pn observations, and (\textbf{b}) distribution of residuals from the best-fit model to EPIC-pn observations, along with the KDE function and fitted Gaussian with a standard deviation of $\sigma=0.169$.}
         \label{fig:all-obs:resid-stats}
     \end{figure*}
+	
+%	\begin{figure*}[!htb]
+%        \centering
+%        \begin{subfigure}[b]{0.51\textwidth}
+%            \includegraphics[width=\textwidth]{figures/resid/mr-vel-0111150101-pn_resid.png}
+%            \caption{Residuals between data and best-fit model for EPIC-pn observations}
+%            \label{fig:pn:resid}
+%        \end{subfigure}
+%        \hfill
+%        \begin{subfigure}[b]{0.39\textwidth}
+%            \includegraphics[width=\textwidth]{figures/resid/mr-vel-0111150101-pn_resid-hist.png}
+%	        \caption{Distribution of residuals from the best-fit model to EPIC-pn observations, along with the KDE function and fitted Gaussian}
+%	        \label{fig:pn:resid-hist}
+%        \end{subfigure}
+%        \caption{Residual statistics from best-fit model to all observations}
+%        \label{fig:all-obs:resid-stats}
+%    \end{figure*}
     
-    As it can be seen in figure \ref{fig:pn:resid-hist}, the kernel density estimate (KDE) function of the distribution closely approximates a normal distribution centred about zero (with zero indicating a perfect fit) and with a standard deviation of 0.169, thereby indicating that the observed count rate data can be considered to be random fluctuations which are normally distributed about the best-fit model. Therefore, the normal distribution of the residuals indicates that they are random and do not have a systematic bias (as is expected of a good fit), thereby further validating that the model fitting performed is satisfactory for all six cases of the observations.
+    As it can be seen in figure \ref{fig:all-obs:resid-stats}(b), the kernel density estimate (KDE) function of the distribution closely approximates a normal distribution centred about zero (with zero indicating a perfect fit) and with a standard deviation of 0.169, thereby indicating that the observed count rate data can be considered to be random fluctuations which are normally distributed about the best-fit model. Therefore, the normal distribution of the residuals indicates that they are random and do not have a systematic bias (as is expected of a good fit), thereby further validating that the model fitting performed is satisfactory for all six cases of the observations.
     
     \begin{figure}[!htb]
     	\centering
     	\includegraphics[width=0.45\textwidth]{figures/resid/mr-vel-resid-gaussfit_all-obs.png}
-    	\caption{Gaussian approximations of the KDE functions for residual distributions of all observations}
+    	\caption{Gaussian approximations of the KDE functions for residual distributions of all observations.}
     	\label{fig:all-obs:resid-gaussfit}
     \end{figure}
     
@@ -199,7 +206,7 @@
     \begin{figure*}[!htb]
     	\centering
     	\includegraphics[width=0.9\textwidth]{figures/fig-line_identification-rgs.png}
-    	\caption{Overlay of transition lines on the fluxed RGS spectrum of \source\ for Obs. ID 0111150101. The colour scheme is: N VI and N VII lines in light and dark green respectively, O VII and O VIII lines in light and dark blue respectively, Fe XVII and Fe XVIII lines in light and dark red respectively}
+    	\caption{Overlay of transition lines on the fluxed RGS spectrum of \source\ for Obs. ID 0111150101. The colour scheme is: N VI and N VII lines in light and dark green respectively, O VII and O VIII lines in light and dark blue respectively, Fe XVII and Fe XVIII lines in light and dark red respectively.}
     	\label{fig:rgs-line-overlay}  
     \end{figure*}
     
