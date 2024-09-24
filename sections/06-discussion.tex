@@ -175,13 +175,13 @@
 		In order to numerically solve the structural equations for NLTE, they are first discretized over all three continuous variables: optical depth $\tau$, frequency $\nu$ and angle $\theta$. These discretized structural equations, together with a number of auxiliary relations, form a system of highly coupled, non-linear equations. Then the \textit{complete linearization scheme} \cite{auer1970non} is used to treat all equations on the same footing, thus solving all structural equations simultaneously. The T\"{u}bingen NLTE Model Atmosphere Package (TMAP)$^{26}$ code uses ALI to calculate the stellar atmosphere by taking into account metal line-blanketing. With an extended grid of such atmospheres of pure-hydrogen models, synthetic spectral were calculated and these are eventually used as table models in XSPEC in the present work to simulate the source emission.
     
     \subsection{Inferences from results}
-    In the current work, we are trying to understand the supersoft spectrum of \source, across observations from 1994 to 2019. The idea is to develop a robust model that explains its supersoft spectrum over different time scales and different observing instruments. The best-fit model consists of XSPEC model components which consider various factors affecting the observed spectrum:
-    \begin{enumerate}[a)]
-   		\item \texttt{atable\{}pure-H NLTE with $\log{g}=7$\texttt{\}}: for the actual radiation emitted by \source
-   		\item \texttt{edge}: for specific wavelengths where bound-free absorption is particularly strong, leading to absorption edges
-   		\item \texttt{phabs}: for describing the photoelectric absorption at the source itself.
-   		\item \texttt{ismabs}: for describing how light interacts with the intervening inter-stellar medium before reaching us
-   	\end{enumerate}
+    In the current work, we are trying to understand the supersoft spectrum of \source, across observations from 1994 to 2019. The idea is to develop a robust model that explains its supersoft spectrum over different time scales and different observing instruments. %The best-fit model consists of XSPEC model components which consider various factors affecting the observed spectrum:
+%    \begin{enumerate}[a)]
+%   		\item \texttt{atable\{}pure-H NLTE with $\log{g}=7$\texttt{\}}: for the actual radiation emitted by \source
+%   		\item \texttt{edge}: for specific wavelengths where bound-free absorption is particularly strong, leading to absorption edges
+%   		\item \texttt{phabs}: for describing the photoelectric absorption at the source itself.
+%   		\item \texttt{ismabs}: for describing how light interacts with the intervening inter-stellar medium before reaching us
+%   	\end{enumerate}
     	
     Initially, a simple blackbody model failed to fit the spectrum. Blackbodies emit a characteristic spectrum based on temperature, and it seems this doesn't accurately represent the complex emission from \source. Then the supersoft X-ray emission of \source\ was modelled using an NLTE stellar atmosphere model \cite{werner1999classical}. Some of these are made available as tables in appropriate FITS format to be used with the XSPEC table model component \texttt{atable} \cite{rauch2003grid,rauch2010nlte}. These models, which are essentially pre-calculated grids, vary from one another in terms of the elemental abundances, the effective temperature $T_\text{eff}$ and the effective gravity $\log{g}$ (where the gravitational acceleration $g$ is expressed in cgs units). Choosing a particular FITS file fixed the specific elemental abundance and effective gravity. Then the fitting of the model to the data is performed by using the effective temperature $T_\text{eff}$ and the redshift $z$ as parameters.
     

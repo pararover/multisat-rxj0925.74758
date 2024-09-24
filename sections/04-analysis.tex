@@ -1,5 +1,12 @@
 \section{Data Analysis} \label{sec:analysis}
-    \begin{itemize}
-        \item description of models
-        \item description of methods
-    \end{itemize}
+%    \begin{itemize}
+%        \item description of models
+%        \item description of methods
+%    \end{itemize}
+	The best-fit model consists of XSPEC model components which consider various factors affecting the observed spectrum:
+    \begin{enumerate}[a)]
+   		\item \texttt{atable\{}pure-H NLTE with $\log{g}=7$\texttt{\}}: for the actual radiation emitted by \source
+   		\item \texttt{edge}: for specific wavelengths where bound-free absorption is particularly strong, leading to absorption edges
+   		\item \texttt{phabs}: for describing the photoelectric absorption at the source itself.
+   		\item \texttt{ismabs}: for describing how light interacts with the intervening inter-stellar medium before reaching us
+   	\end{enumerate}
