@@ -39,7 +39,25 @@
     
     \subsection{NLTE continuum model}
     In table \ref{tab:res-fitting}, we present the luminosity, effective temperature and column density for \source\ which are derived after performing the fitting to the NLTE continuum model described in \S \ref{sec:reduction-analysis} We also present the model fit statistics, namely the reduced $\chi^2$ values for each fit. It can be noticed that the same continuum model has been able to provide a good fit to all of the observations in our chosen dataset.
-    \begin{table*}[!htb]
+%    \begin{table*}[!htb]
+%    	\centering
+%    	\caption{Parameters of \source\ derived from continuum NLTE model from multi-observatory observations.}
+%    	\label{tab:res-fitting}
+%    	\begin{tabular}{ccccccc}
+%			\hline
+%			{\textbf{Observatory}} & {\textbf{Obs. ID}} & {$\boldsymbol{L_*}$ \textbf{(erg s$\boldsymbol{^{-1}}$)}} & {\textbf{$\boldsymbol{T_\text{eff}}$ (kK)}} & {\textbf{$\boldsymbol{n_H}$ ($\boldsymbol{\times 10^{22}}$ cm$\boldsymbol{^{-2}}$)}} & {$\boldsymbol{\chi^2}$/\textbf{d.o.f}} & {$\boldsymbol{\chi^2_\text{reduced}}$} \\
+%			\hline
+%			{ASCA} & {43036000} & {$2.07_{0.46}^{71.02}\times 10^{41}$} & {$100.2_{56.2}^{147.4}$} & {$0.13_{0.00}^{1.36}$} & {75.4/62} & {1.22} \\ %updated
+%			{Chandra} & {644} & {$4.38_{2.02}^{24.34}\times 10^{41}$} & {$96.3_{81.6}^{120.5}$} & {$1.25_{1.17}^{1.37}$} & {30.5/28} & {1.09} \\ %updated
+%			{XMM-Newton} & {0111150101} & {$2.19_{1.96}^{3.74}\times 10^{42}$} & {$91.7_{86.9}^{100.2}$} & {$1.17_{1.09}^{1.27}$} & {183.4/131} & {1.40} \\ %updated
+%			{NICER} & {2611020101} & {$8.40_{6.77}^{19.16}\times 10^{41}$} & {$100.8_{90.0}^{110.1}$} & {$1.22_{1.11}^{1.28}$} & {65.4/52} & {1.26} \\ %updated
+%			{NICER} & {2611020102} & {$1.68_{1.41}^{3.37}\times 10^{41}$} & {$107.9_{100.4}^{113.8}$} & {$0.46_{0.43}^{0.54}$} & {82.9/46} & {1.80} \\ %updated
+%			{NICER} & {2611020103} & {$4.41_{3.42}^{6.81}\times 10^{40}$} & {$106.9_{101.6}^{110.4}$} & {$0.36_{0.34}^{0.41}$} & {83.3/46} & {1.81} \\ %updated
+%			\hline
+%		\end{tabular}
+%	\end{table*}
+	
+	\begin{table*}[!htb]
     	\centering
     	\caption{Parameters of \source\ derived from continuum NLTE model from multi-observatory observations.}
     	\label{tab:res-fitting}
@@ -47,12 +65,12 @@
 			\hline
 			{\textbf{Observatory}} & {\textbf{Obs. ID}} & {$\boldsymbol{L_*}$ \textbf{(erg s$\boldsymbol{^{-1}}$)}} & {\textbf{$\boldsymbol{T_\text{eff}}$ (kK)}} & {\textbf{$\boldsymbol{n_H}$ ($\boldsymbol{\times 10^{22}}$ cm$\boldsymbol{^{-2}}$)}} & {$\boldsymbol{\chi^2}$/\textbf{d.o.f}} & {$\boldsymbol{\chi^2_\text{reduced}}$} \\
 			\hline
-			{ASCA} & {43036000} & {$2.07_{0.46}^{71.02}\times 10^{41}$} & {$100.2_{56.2}^{147.4}$} & {$0.13_{0.00}^{1.36}$} & {75.4/62} & {1.22} \\ %updated
-			{Chandra} & {644} & {$4.38_{2.02}^{24.34}\times 10^{41}$} & {$96.3_{81.6}^{120.5}$} & {$1.25_{1.17}^{1.37}$} & {30.5/28} & {1.09} \\ %updated
-			{XMM-Newton} & {0111150101} & {$2.19_{1.96}^{3.74}\times 10^{42}$} & {$91.7_{86.9}^{100.2}$} & {$1.17_{1.09}^{1.27}$} & {183.4/131} & {1.40} \\ %updated
-			{NICER} & {2611020101} & {$8.40_{6.77}^{19.16}\times 10^{41}$} & {$100.8_{90.0}^{110.1}$} & {$1.22_{1.11}^{1.28}$} & {65.4/52} & {1.26} \\ %updated
-			{NICER} & {2611020102} & {$1.68_{1.41}^{3.37}\times 10^{41}$} & {$107.9_{100.4}^{113.8}$} & {$0.46_{0.43}^{0.54}$} & {82.9/46} & {1.80} \\ %updated
-			{NICER} & {2611020103} & {$4.41_{3.42}^{6.81}\times 10^{40}$} & {$106.9_{101.6}^{110.4}$} & {$0.36_{0.34}^{0.41}$} & {83.3/46} & {1.81} \\ %updated
+			{ASCA} & {43036000} & {$2.1_{-1.6}^{+68.9}\times 10^{41}$} & {$100_{-44}^{+47}$} & {$0.13_{-0.13}^{+1.26}$} & {75.4/62} & {1.22} \\ %updated
+			{Chandra} & {644} & {$4.4_{-2.4}^{+19.9}\times 10^{41}$} & {$96_{-15}^{+24}$} & {$1.25_{-0.08}^{+0.12}$} & {30.5/28} & {1.09} \\ %updated
+			{XMM-Newton} & {0111150101} & {$2.2_{-0.2}^{+1.5}\times 10^{42}$} & {$92_{-5}^{+9}$} & {$1.17_{-0.08}^{+0.10}$} & {183.4/131} & {1.40} \\ %updated
+			{NICER} & {2611020101} & {$8.4_{-1.6}^{+10.8}\times 10^{41}$} & {$101_{-11}^{+9}$} & {$1.22_{-0.11}^{+0.06}$} & {65.4/52} & {1.26} \\ %updated
+			{NICER} & {2611020102} & {$1.7_{-0.3}^{+1.7}\times 10^{41}$} & {$108_{-8}^{+6}$} & {$0.46_{-0.03}^{+0.08}$} & {82.9/46} & {1.80} \\ %updated
+			{NICER} & {2611020103} & {$4.4_{-1.0}^{+2.4}\times 10^{40}$} & {$107_{-5}^{+4}$} & {$0.36_{-0.02}^{+0.05}$} & {83.3/46} & {1.81} \\ %updated
 			\hline
 		\end{tabular}
 	\end{table*}
