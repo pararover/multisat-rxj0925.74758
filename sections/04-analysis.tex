@@ -5,8 +5,24 @@
 %    \end{itemize}
 	The best-fit model consists of XSPEC model components which consider various factors affecting the observed spectrum:
     \begin{enumerate}[a)]
-   		\item \texttt{atable\{}pure-H NLTE with $\log{g}=7$\texttt{\}}: for the actual radiation emitted by \source
-   		\item \texttt{edge}: for specific wavelengths where bound-free absorption is particularly strong, leading to absorption edges
+   		\item \texttt{atable\{}pure-H NLTE with $\log{g}=7$\texttt{\}}: for the actual radiation emitted by \source.
    		\item \texttt{phabs}: for describing the photoelectric absorption at the source itself.
-   		\item \texttt{ismabs}: for describing how light interacts with the intervening inter-stellar medium before reaching us
+   		\item \texttt{ismabs}: for describing how light interacts with the intervening inter-stellar medium before reaching us.
+   		\item \texttt{edge}: for specific wavelengths where bound-free absorption is particularly strong, leading to absorption edges.
    	\end{enumerate}
+   	
+   	The same model, mentioned above, is used for fitting the data from all the six different observations summarised in table \ref{tab:obs-journal}. The NLTE table model component is computed from a grid of stellar model atmosphere fluxes$^{22}$ for hot compact stars from NLTE model atmospheres by Rauch (2003) \cite{rauch2003grid}. The photoelectric absorption component$^{23}$ is due to a neutral gas, primarily hydrogen. It applies an attenuation factor, which includes the hydrogen column density $n_H$ and the photoelectric cross-section $\sigma(E)$, thereby allowing for the modeling of absorption effects in the supersoft X-ray range. The component for absorption by the ISM$^{24}$ uses detailed cross-sections for individual elements and molecules, allowing for non-solar abundances. Finally, the absorption edges are included using the multiplicative component$^{25}$. On a continuum model, an absorption edge may be modelled as follows:
+    \begin{align}
+    	M(E)=\begin{cases}
+    		{1;\quad E\leqslant E_\text{th}} \\
+    		{\exp{\left[ -D\left(\dfrac{E}{E_\text{th}}\right)^{-3} \right]};\quad E> E_\text{th}}
+    	\end{cases} \label{eqn:edge-comp}
+    \end{align}
+    In equation (\ref{eqn:edge-comp}), $E_\text{th}$ is the \textit{threshold energy} and $D$ is the \textit{absorption depth}. The model component is implemented with these two quantities being its parameters. The relative values of the absorption depths enables a comparison of the strengths of the absorption edges.
+    
+    The composite model incorporates the aforementioned fundamental components to represent the supersoft X-ray continuum spectrum of \source. The intrinsic emission from the hot white dwarf is modeled using a pure hydrogen NLTE atmosphere component, which accounts for deviations from thermodynamic equilibrium in the high-temperature, high-density environment of the white dwarf. This emission is then modified by photoelectric absorption due to neutral hydrogen in the atmosphere of \source, hence characterized by the hydrogen column density and photoelectric cross-section, which dominates in the supersoft X-ray regime typical of SSS. In addition, absorption by the intervening ISM is modeled with detailed cross-sections for individual elements and molecules, allowing for non-solar abundances, to account for the interactions of supersoft X-ray photons with the ISM. Additionally, absorption edges are included to account for ionization processes at specific energies, with parameters for threshold energy and absorption depth to account for bound-free transitions in both the emitting region and intervening material.
+    
+	The NLTE models available in the literature likely fail due to either insufficient model complexity or limitations in the signal-to-noise ratio (SNR) of the data. This study was thus initiated to establish a baseline for a continuum model that incorporates emission due to NLTE atmosphere, with the goal of future work incorporating emission features through a phenomenological approach to modeling individual emission lines.
+	%The NLTE models available in literature probably fail either due to inadequacies of model components or insufficient SNR in the data. Therefore, the present study was initiated so as to arrive at a baseline NLTE continuum model, followed by later studies which subsequently account for emission features by adopting a phenomenological approach to model individual emission lines.
+   	
+   	%chosen for fitting the data from six different observations, consists of a publicly available NLTE (non-local thermal equilibrium) table model component computed from a grid of stellar model atmosphere fluxes for source emission$^{22}$, a photoelectric absorption model component$^{23}$, a model component for absorption by inter-stellar medium$^{24}$ and four model components to account for the presence of absorption edges$^{25}$.
