@@ -3,7 +3,7 @@
 	%During the course of our investigation of the continuum spectrum of \source, we leveraged a comprehensive dataset comprising six observations conducted by four distinct space observatories spanning the years 1994 to 2019.
 	By extracting spectral data within the range 0.2 -- 1.0 keV from each observation, we were able to apply a consistent spectral analysis approach across a broad temporal range and disparate instrumentation platforms.
 		
-	In addition to the science data using observations from NASA's \textit{Chandra} and ESA's \textit{XMM-Newton}, investigated earlier by Bearda \textit{et al.} (2002) \cite{beardaChandra2002AA} and Motch \textit{et al.} (2002) \cite{motchXmmNewton2002AA} respectively, we have included observations from JAXA's \textit{ASCA} and NASA's \textit{NICER} aboard the \textit{International Space Station}, studied respectively by Ebisawa \textit{et al.} (2001) \cite{ebisawaAsca2001ApJ} and Orio \textit{et al.} (2022) \cite{orioNicer2022ApJ}. A summary of these observations used in the present work, %which included science data from Japan's ASCA \cite{ebisawaAsca2001ApJ}, NASA's Chandra \cite{beardaChandra2002AA}, ESA's XMM-Newton \cite{motchXmmNewton2002AA} and ISS' NICER \cite{orioNicer2022ApJ} observatories,
+	In addition to the science data using observations from NASA's \textit{Chandra} and ESA's \textit{XMM-Newton}, investigated earlier by Bearda \textit{et al.} (2002) \cite{beardaChandra2002AA} and Motch \textit{et al.} (2002) \cite{motchXmmNewton2002AA} respectively, we have included observations from JAXA's \textit{ASCA} and NASA's \textit{NICER} aboard the \textit{International Space Station}, studied respectively by Ebisawa \textit{et al.} (2001) \cite{ebisawaAsca2001ApJ} and Orio \textit{et al.} (2022) \cite{orioNicer2022ApJ}. A summary of these observations, used in the present study, %which included science data from Japan's ASCA \cite{ebisawaAsca2001ApJ}, NASA's Chandra \cite{beardaChandra2002AA}, ESA's XMM-Newton \cite{motchXmmNewton2002AA} and ISS' NICER \cite{orioNicer2022ApJ} observatories,
 	is presented in table \ref{tab:obs-journal}. %Journal of observations goes in here, which will contain the observation details of the data used from ASCA, Chandra ACIS, XMM-Newton EPIC-pn and possibly NICER.
 %    \begin{table*}[!htb]
 %    	\centering
@@ -29,6 +29,28 @@
 %			\small $^\ddagger$From HEASARC archival query results
 %		\end{minipage}
 %	\end{table*}
+%	\begin{table*}[!htb]
+%    	\centering
+%    	\caption{Journal of observations}
+%    	\label{tab:obs-journal}
+%		\begin{tabular}{ccccccc}
+%		\hline
+%		\textbf{\begin{tabular}[c]{@{}c@{}}Observation\\ (Obs. ID)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Date\\ (yyyy-mm-dd)\end{tabular}} & \textbf{Observatory} & \textbf{Instrument} & \textbf{\begin{tabular}[c]{@{}c@{}}Exposure$^\ddagger$\\ (ks)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Bandwidth\\ (keV)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Net count rate\\ ($\boldsymbol{\times 10^{-2}}$ counts/sec)\end{tabular}} \\
+%		\hline
+%		{43036000}   & {1994-12-22} & {\textit{ASCA}} & {SIS1} & {20.58} & {0.20--1.00} & {$11.0\pm 0.3$} \\
+%		{644}        & {2000-11-14} & {\textit{Chandra}} & {ACIS} & {57.40} & {0.40--1.00} & {$10.6\pm 0.1$} \\
+%		{0111150101} & {2000-12-16} & {\textit{XMM-Newton}} & {EPIC-pn} & {61.10} & {0.30--1.00} & {$493.9\pm 1.0$} \\
+%		{2611020101} & {2019-05-18} & {\textit{NICER}} & {XTI} & {2.53} & {0.40--1.00} & {$1107.0\pm 6.3$} \\
+%		{2611020102} & {2019-05-19} & {\textit{NICER}} & {XTI} & {8.57} & {0.45--1.00} & {$970.4\pm 3.3$} \\
+%		{2611020103} & {2019-05-19} & {\textit{NICER}} & {XTI} & {9.91} & {0.45--1.00} & {$1049.0\pm 3.2$} \\
+%		\hline
+%		\end{tabular}
+%		
+%		\begin{minipage}{16cm}
+%			\vspace{0.1cm}
+%			\small $^\dagger$From HEASARC archival query results
+%		\end{minipage}
+%	\end{table*}
 	\begin{table*}[!htb]
     	\centering
     	\caption{Journal of observations}
@@ -37,12 +59,12 @@
 		\hline
 		\textbf{\begin{tabular}[c]{@{}c@{}}Observation\\ (Obs. ID)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Date\\ (yyyy-mm-dd)\end{tabular}} & \textbf{Observatory} & \textbf{Instrument} & \textbf{\begin{tabular}[c]{@{}c@{}}Exposure$^\ddagger$\\ (ks)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Bandwidth\\ (keV)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Net count rate\\ ($\boldsymbol{\times 10^{-2}}$ counts/sec)\end{tabular}} \\
 		\hline
-		{43036000}   & {1994-12-22} & {\textit{ASCA}} & {SIS1} & {20.58} & {0.20--1.00} & {$11.0\pm 0.3$} \\
-		{644}        & {2000-11-14} & {\textit{Chandra}} & {ACIS} & {57.40} & {0.40--1.00} & {$10.6\pm 0.1$} \\
-		{0111150101} & {2000-12-16} & {\textit{XMM-Newton}} & {EPIC-pn} & {61.10} & {0.30--1.00} & {$493.9\pm 1.0$} \\
-		{2611020101} & {2019-05-18} & {\textit{NICER}} & {XTI} & {2.53} & {0.40--1.00} & {$1107.0\pm 6.3$} \\
-		{2611020102} & {2019-05-19} & {\textit{NICER}} & {XTI} & {8.57} & {0.45--1.00} & {$970.4\pm 3.3$} \\
-		{2611020103} & {2019-05-19} & {\textit{NICER}} & {XTI} & {9.91} & {0.45--1.00} & {$1049.0\pm 3.2$} \\
+		{43036000}   & {1994-12-22} & {\textit{ASCA}} & {SIS1} & {20.6} & {0.20--1.00} & {$11.0\pm 0.3$} \\
+		{644}        & {2000-11-14} & {\textit{Chandra}} & {ACIS} & {57.4} & {0.40--1.00} & {$10.6\pm 0.1$} \\
+		{0111150101} & {2000-12-16} & {\textit{XMM-Newton}} & {EPIC-pn} & {61.1} & {0.30--1.00} & {$493.9\pm 1.0$} \\
+		{2611020101} & {2019-05-18} & {\textit{NICER}} & {XTI} & {2.5} & {0.40--1.00} & {$1107.0\pm 6.3$} \\
+		{2611020102} & {2019-05-19} & {\textit{NICER}} & {XTI} & {8.6} & {0.45--1.00} & {$970.4\pm 3.3$} \\
+		{2611020103} & {2019-05-19} & {\textit{NICER}} & {XTI} & {9.9} & {0.45--1.00} & {$1049.0\pm 3.2$} \\
 		\hline
 		\end{tabular}
 		
